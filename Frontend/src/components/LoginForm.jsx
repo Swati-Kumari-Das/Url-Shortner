@@ -12,12 +12,14 @@ const LoginForm = ({state}) => {
     setError('');
     
     try {
-      await loginUser(password, email);
+      await loginUser(email,password);
       setLoading(false);
-    } catch (err) {
-      setError(err.message || 'Login failed');
+    } 
+    catch (err) {
+      setError(err.data?.message || err.message || "Login failed");
       setLoading(false);
     }
+    
   };
 
   return (
