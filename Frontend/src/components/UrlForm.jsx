@@ -1,17 +1,34 @@
 import React from 'react'
-
+import { useSelector } from 'react-redux';
 import { useState } from 'react'
 import { createShortUrl } from '../api/shortUrl.api'
-function UrlForm() {
 
+import { useQueryClient } from '@tanstack/react-query';
+function UrlForm() {
+  
+  const queryClient = useQueryClient();
   const [url, setUrl] = useState("http://www.google.com")
   const [shortUrl,setShortUrl]=useState("")
   const [copied,setCopied]=useState(false)
+  const [error,setError]=useState("")
+  const [customSlug,setCustomSlug]=useState()
+  const {isAuthenticated} = useSelector((state)=>state.auth);
  
+
   const handleSubmit = async()=>{
-        const shortUrl=await createShortUrl(url);
+        
+       try{
+        const shortUrl=await createShortUrl(url,customSlug);
         setShortUrl(shortUrl);
         // console.log(data);
+        // QueryClient.invalidateQueries({queryKey:['userUrls']})
+        queryClient.invalidateQueries({queryKey:['userUrls']})
+        setError(null)
+       }catch(err){
+        
+        setError(err.message);
+       }
+       
   }
 
  
@@ -54,7 +71,22 @@ function UrlForm() {
             {error}
           </div>
         )} */}
-        
+        {isAuthenticated &&(
+           <div className='mt-4'>
+            <label htmlFor="customSlug" className='block text-sm font-medium text-gray-700 mb-1'>
+             Custom URL (optional)
+            </label>
+            <input 
+            type="text"
+            id="customSlug"
+            value={customSlug}
+            onChange={(event)=>setCustomSlug(event.target.value)}
+            placeholder="Enter custom slug"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+           </div>
+        )} 
+
         {shortUrl && (
           <div className="mt-6">
             <h2 className="text-lg font-medium text-gray-800 mb-2">Your shortened URL:</h2>

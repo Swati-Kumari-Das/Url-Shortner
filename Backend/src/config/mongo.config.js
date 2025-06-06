@@ -1,7 +1,6 @@
 
 import mongoose from "mongoose";
 // Check if the environment variable is defined
-console.log("MongoDB URL:", process.env.MONGO_URL);
 
 const connectDB=async()=>{
     try{
