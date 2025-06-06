@@ -83,7 +83,7 @@ bcrypt	             Password hashing
 ## ⚙️ Installation Steps
 1. Clone the repository
 
-git clone https://github.com/your-username/url-shortener.git
+https://github.com/Swati-Kumari-Das/Url-Shortner.git
 cd url-shortener
 
 2. Backend Setup
