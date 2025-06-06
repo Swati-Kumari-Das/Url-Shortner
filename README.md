@@ -1,14 +1,9 @@
-
-🛠️ Tech Stack
-Tech	               Use
-MongoDB	             Database
-Express.js	         Backend framework
-React	Frontend       UI
-Node.js	             Server environment
-Redux Toolkit        State management
-TanStack Router 	   Routing
-JWT	Authentication   tokens
-bcrypt	             Password hashing
+📌 URL Shortener – MERN Stack Project
+A full-stack URL shortener web app built using the MERN stack. It allows users to register/login, shorten long URLs (with optional custom aliases), and manage their personal URL history. The project uses modern tools and practices like a modular backend, JWT-based authentication, Redux Toolkit, and TanStack Router for smooth client-side routing.
+## 🛠️ Tech Stack Used
+Frontend: React, TanStack Router, Redux Toolkit, Axios
+Backend: Node.js, Express.js, MongoDB, Mongoose
+Authentication: JWT, bcrypt, HTTP-only cookies
 ## 🚀 Features
 - ✅ User Registration & Login (JWT + bcrypt)
 - 🔐 Protected Routes & Persistent Auth (via cookies)
@@ -41,12 +36,6 @@ bcrypt	             Password hashing
 1. Clone the repository
 https://github.com/Swati-Kumari-Das/Url-Shortner.git
 cd url-shortener
-2. Backend Setup->cd Backend -> npm install
-# Create a .env file
-Example
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-npm run dev
+2. Backend Setup->cd Backend -> npm install->Create a .env file ->npm run dev
 3. Frontend Setup:cd ../Frontend -> npm install  -> npm run dev
 
